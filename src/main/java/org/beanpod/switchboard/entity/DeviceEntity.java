@@ -1,11 +1,8 @@
 package org.beanpod.switchboard.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -52,4 +49,8 @@ public class DeviceEntity {
       mappedBy = "device",
       cascade = {CascadeType.REMOVE})
   private EncoderEntity encoderEntity;
+
+  @ManyToOne
+  @JoinColumn(name = "owner_id")
+  private UserEntity owner;
 }

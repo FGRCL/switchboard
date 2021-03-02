@@ -1,13 +1,6 @@
 package org.beanpod.switchboard.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -39,4 +32,8 @@ public class StreamEntity {
   @Column(name = "isRendezvous")
   @NotNull
   private Boolean isRendezvous;
+
+  @ManyToOne
+  @JoinColumn(name = "owner_id")
+  private UserEntity owner;
 }
